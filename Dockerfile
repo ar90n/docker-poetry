@@ -2,10 +2,10 @@ ARG VERSION=latest
 FROM python:$VERSION
 
 RUN apt-get update &&\
-    apt-get install -y libblas-dev liblapack-dev &&\
+    apt-get install -y libblas-dev liblapack-dev zsh &&\
     apt-get clean
 
 RUN python -m pip install --upgrade pip &&\
-    python -m pip install poetry
+    bash -c "curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | POETRY_HOME=/usr/local python - --yes --preview"
 
 ENTRYPOINT [ "python" ]

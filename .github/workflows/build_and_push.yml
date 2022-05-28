@@ -41,4 +41,4 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/python-cuda:${{ github.event.inputs.version }}
           build-args: |
             PYTHON_VERSION=${{ github.event.inputs.version }}
-            CUDA_VERSION=11.7.0
+            CUDA_VERSION=11.6.0

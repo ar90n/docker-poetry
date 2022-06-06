@@ -2,7 +2,7 @@ ARG VERSION=latest
 FROM python:$VERSION
 
 RUN apt-get update &&\
-    apt-get install -y libblas-dev liblapack-dev zsh &&\
+    apt-get install -y libblas-dev liblapack-dev zsh nodejs &&\
     apt-get clean
 
 RUN python -m pip install --upgrade pip &&\

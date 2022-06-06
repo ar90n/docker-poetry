@@ -7,7 +7,7 @@ ARG PYTHON_VERSION
 ENV DEBIAN_FRONTEND noninteractive
 RUN set -x && \
     apt-get update -qq && \
-    apt-get install -y build-essential curl libblas-dev liblapack-dev zsh &&\
+    apt-get install -y build-essential curl libblas-dev liblapack-dev zsh nodejs &&\
     apt-get clean
 
 WORKDIR /tmp

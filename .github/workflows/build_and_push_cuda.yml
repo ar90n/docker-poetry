@@ -3,8 +3,12 @@ name: build_and_push
 on:
   workflow_dispatch:
     inputs:
-      version:
+      py_version:
         description: 'python version'
+        required: true
+        default: 'latest'
+      cuda_version:
+        description: 'cuda version'
         required: true
         default: 'latest'
 
@@ -24,10 +28,13 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
-        name: Build and push python image
-        id: docker_build_python
+        name: Build and push python-cuda image
+        id: docker_build_python_cuda
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/python:${{ github.event.inputs.version }}
-          build-args: VERSION=${{ github.event.inputs.version }}
+          file: Dockerfile.cuda
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/python-cuda:${{ github.event.inputs.py_version }}-${{ github.event.inputs.cuda_version }}
+          build-args: |
+            PYTHON_VERSION=${{ github.event.inputs.py_version }}
+            CUDA_VERSION=${{ github.event.inputs.cuda_version }}

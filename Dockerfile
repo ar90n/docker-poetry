@@ -6,6 +6,6 @@ RUN apt-get update &&\
     apt-get clean
 
 RUN python -m pip install --upgrade pip &&\
-    bash -c "curl -sSL https://install.python-poetry.org | POETRY_HOME=/usr/local python - --yes --preview"
+    bash -c "curl -sSL https://install.python-poetry.org | POETRY_HOME=/usr/local python - --yes"
 
 ENTRYPOINT [ "python" ]

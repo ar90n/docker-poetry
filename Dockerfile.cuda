@@ -16,7 +16,7 @@ RUN set -x && \
     bash Mambaforge-$(uname)-$(uname -m).sh -b -p /usr/local/miniconda3 && \
     rm Mambaforge-$(uname)-$(uname -m).sh && \
     /usr/local/miniconda3/bin/conda install python=${PYTHON_VERSION} && \
-    bash -c "curl -sSL https://install.python-poetry.org | POETRY_HOME=/usr/local /usr/local/miniconda3/bin/python - --yes --preview"
+    bash -c "curl -sSL https://install.python-poetry.org | POETRY_HOME=/usr/local /usr/local/miniconda3/bin/python - --yes"
 
 ENV PATH /usr/local/miniconda3/bin:/usr/local/cuda/bin:$PATH
 CMD ["python"]
